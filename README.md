@@ -1,6 +1,7 @@
 # Prettify JSON
 
 This script loads json file with a list of alcohol shops and prints it in human readable format.
+You may download sample data from [devman](https://devman.org/media/filer_public/1d/32/1d32132e-efa4-4a6c-bd32-312acc3710ad/alco_shops.json)
 
 # Quickstart
 
