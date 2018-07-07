@@ -1,27 +1,31 @@
 import json
-import pprint
 import argparse
-import sys
 
 
 def load_data(filepath):
-    with open(filepath) as f:
-        shops_list = json.load(f)
-    return shops_list
+    with open(filepath) as json_file:
+        json_data = json.load(json_file)
+    return json_data
 
 
-def pretty_print_json(shops_list):
-    shop_json_string = pprint.pformat(shops_list)
-    print(shop_json_string)
+def pretty_print_json(json_data):
+    json_text = json.dumps(json_data, sort_keys=True,
+                           indent=4, ensure_ascii=False)
+
+    print(json_text)
 
 
-if __name__ == '__main__':
+def create_parser():
     parser = argparse.ArgumentParser(
         description='Print json file in human readble format.')
     parser.add_argument('filepath', metavar='f', type=str,
                         help='path to json file')
 
     args = parser.parse_args()
+    return args
 
-    shop_list = load_data(args.filepath)
-    pretty_print_json(shop_list)
+
+if __name__ == '__main__':
+    args = create_parser()
+    json_data = load_data(args.filepath)
+    pretty_print_json(json_data)
