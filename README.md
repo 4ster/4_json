@@ -1,12 +1,10 @@
 # Prettify JSON
 
-[TODO. There will be project description]
+This script loads json file with a list of alcohol shops and prints it in human readable format.
 
 # Quickstart
 
-[TODO]
-
-Example of script launch on Linux, Python 3.5:
+Launch on Linux, Python 3.5:
 
 ```bash
 
