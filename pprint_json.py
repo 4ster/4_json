@@ -4,19 +4,26 @@ import argparse
 
 def load_data(filepath):
     with open(filepath) as json_file:
-        text_to_beautify = json.load(json_file)
-    return text_to_beautify
+        try:
+            decoded = json.load(json_file)
+        except json.JSONDecodeError as e:
+            exit("Error: Invalid json in file {0}.\n{1} in position {2}".format(
+                filepath,
+                e.msg,
+                e.pos
+            ))
+    return decoded
 
 
 def pretty_print_json(text_to_beautify):
-    formatted_text = json.dumps(
+    formatted_json = json.dumps(
         text_to_beautify,
         sort_keys=True,
         indent=4,
         ensure_ascii=False
         )
 
-    print(formatted_text)
+    print(formatted_json)
 
 
 def create_parser():
