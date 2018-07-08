@@ -42,5 +42,5 @@ if __name__ == '__main__':
         json_data = load_data(args.filepath)
         pretty_print_json(json_data)
     except FileNotFoundError as e:
-        print("Error: File not found '{0}'\nPlease check filename and path.".format(e.filename))
+        print("Error: File not found '{0}'".format(e.filename))
     
