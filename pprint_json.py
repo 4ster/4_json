@@ -6,7 +6,7 @@ def load_data(filepath):
     with open(filepath) as json_file:
         try:
             decoded = json.load(json_file)
-        except json.JSONDecodeError as e:
+        except json.JSONDecodeError:
             return None
     return decoded
 
