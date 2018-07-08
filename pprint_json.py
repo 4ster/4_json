@@ -9,16 +9,15 @@ def load_data(filepath):
             return decoded_json
         except json.JSONDecodeError:
             return None
-    
 
 
-def pretty_print_json(json_data):
+def pretty_print_json(decoded_json):
     formatted_json = json.dumps(
-        json_data,
+        decoded_json,
         sort_keys=True,
         indent=4,
         ensure_ascii=False
-        )
+    )
 
     print(formatted_json)
 
@@ -36,10 +35,9 @@ def create_parser():
 if __name__ == '__main__':
     args = create_parser()
     try:
-        json_data = load_data(args.filepath)
-        if json_data is None:
+        decoded_json = load_data(args.filepath)
+        if decoded_json is None:
             exit("Error: Invalid json in file {0}".format(args.filepath))
-        pretty_print_json(json_data)
+        pretty_print_json(decoded_json)
     except FileNotFoundError as e:
         exit("Error: File not found '{0}'".format(e.filename))
-    
