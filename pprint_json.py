@@ -6,9 +6,10 @@ def load_data(filepath):
     with open(filepath) as json_file:
         try:
             decoded_json = json.load(json_file)
+        return decoded_json
         except json.JSONDecodeError:
             return None
-    return decoded_json
+    
 
 
 def pretty_print_json(json_data):
