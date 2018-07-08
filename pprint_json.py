@@ -5,10 +5,10 @@ import argparse
 def load_data(filepath):
     with open(filepath) as json_file:
         try:
-            json_data = json.load(json_file)
+            decoded_json = json.load(json_file)
         except json.JSONDecodeError:
             return None
-    return json_data
+    return decoded_json
 
 
 def pretty_print_json(json_data):
