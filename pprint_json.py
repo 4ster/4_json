@@ -4,15 +4,19 @@ import argparse
 
 def load_data(filepath):
     with open(filepath) as json_file:
-        json_data = json.load(json_file)
-    return json_data
+        text_to_beautify = json.load(json_file)
+    return text_to_beautify
 
 
-def pretty_print_json(json_data):
-    json_text = json.dumps(json_data, sort_keys=True,
-                           indent=4, ensure_ascii=False)
+def pretty_print_json(text_to_beautify):
+    formatted_text = json.dumps(
+        text_to_beautify,
+        sort_keys=True,
+        indent=4,
+        ensure_ascii=False
+        )
 
-    print(json_text)
+    print(formatted_text)
 
 
 def create_parser():
@@ -27,5 +31,9 @@ def create_parser():
 
 if __name__ == '__main__':
     args = create_parser()
-    json_data = load_data(args.filepath)
-    pretty_print_json(json_data)
+    try:
+        json_data = load_data(args.filepath)
+        pretty_print_json(json_data)
+    except FileNotFoundError as e:
+        print("Error: File not found '{0}'\nPlease check filename and path.".format(e.filename))
+    
